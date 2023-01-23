@@ -1,5 +1,5 @@
 import express from "express";
-import { transactions, inputs, outputs } from "../controllers/transactionsController.js";
+import { transactions, inputs, outputs, exclude } from "../controllers/transactionsController.js";
 import { validateFormat } from "../middlewares/formatMiddleware.js";
 import { validateHeader } from "../middlewares/headersMiddleware.js";
 
@@ -10,5 +10,6 @@ transactionsRouter.use(validateHeader);
 transactionsRouter.get('/transactions', transactions);
 transactionsRouter.post('/transactions/inputs', validateFormat, inputs);
 transactionsRouter.post('/transactions/outputs', validateFormat, outputs);
+transactionsRouter.delete('/transactions/:id', exclude);
 
 export default transactionsRouter;

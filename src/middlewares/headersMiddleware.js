@@ -17,6 +17,7 @@ export async function validateHeader(req, res, next){
 
         delete user.password;
         delete user.confirmPassword;
+        
         res.locals.user = user;
     }catch(error){
         return res.status(500).send(error);
