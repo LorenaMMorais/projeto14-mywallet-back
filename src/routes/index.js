@@ -1,12 +1,10 @@
 import express from "express";
-import { login, register } from "../controllers/authController.js";
-import { inputs, outputs, transactions } from "../controllers/transactionsController.js";
+import authRouter from "./authRouter.js";
+import transactionsRouter from "./transactionsRouter.js";
 
 const router = express.Router();
-router.post('/sign-up', register);
-router.post('/', login);
-router.get('/transactions', transactions);
-router.post('/transactions/inputs', inputs);
-router.post('/transactions/outputs', outputs);
+
+router.use(authRouter);
+router.use(transactionsRouter);
 
 export default router;
