@@ -7,9 +7,9 @@ import { validateHeader } from "../middlewares/headersMiddleware.js";
 const transactionsRouter = express.Router();
 
 transactionsRouter.use(validateHeader);
-transactionsRouter.get('/transactions', transactions);
-transactionsRouter.post('/transactions/inputs', validateFormat, inputs);
-transactionsRouter.post('/transactions/outputs', validateFormat, outputs);
-transactionsRouter.delete('/transactions/:id', exclude);
+transactionsRouter.get('/home', transactions);
+transactionsRouter.post('/home/nova-entrada', validateFormat, inputs);
+transactionsRouter.post('/home/nova-saida', validateFormat, outputs);
+transactionsRouter.delete('/home/:id', exclude);
 
 export default transactionsRouter;
