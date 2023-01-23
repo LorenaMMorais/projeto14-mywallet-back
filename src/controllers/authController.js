@@ -17,7 +17,7 @@ export async function register(req, res){
     
     if(error) return res.status(422).send(error.details.map(detail => detail.message));
     
-    const {name, email, password} = req.body;
+    const {name, email, password} = user;
 
     try{
         const user = await db.collection('users').findOne({email: email});
@@ -34,7 +34,7 @@ export async function register(req, res){
         console.log('Erro ao cadastrar usuário', error);
         res.status(500).send('Erro ao cadastrar usuário');
     }
-    res.send(req.body);
+    res.send(user);
 }
 
 export async function login(req, res) {
